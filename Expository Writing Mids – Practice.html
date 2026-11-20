@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Expository Writing Mids – Practice</title>
+<style>
+:root{--bg:#fbfaf7;--card:#fff;--ink:#222;--mute:#666;--line:#ccc;--acc:#1f5fbf;--box:#eef4ff;--ok:#1e8449;--no:#c0392b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171b;--card:#1f2228;--ink:#eee;--mute:#aaa;--line:#444;--acc:#7fb0ff;--box:#222b3a;--ok:#7ddc9a;--no:#ff8a80}}
+:root[data-theme="dark"]{--bg:#15171b;--card:#1f2228;--ink:#eee;--mute:#aaa;--line:#444;--acc:#7fb0ff;--box:#222b3a;--ok:#7ddc9a;--no:#ff8a80}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,Arial,sans-serif}
+main{max-width:760px;margin:auto;padding:16px}
+h1{font-size:26px}h2{font-size:22px;color:var(--acc);border-bottom:2px solid var(--line);padding-bottom:4px;margin-top:36px}
+nav{display:flex;flex-wrap:wrap;gap:8px}nav a{background:var(--card);border:1px solid var(--line);padding:6px 12px;border-radius:20px;color:var(--acc);text-decoration:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:12px 0}
+.box{background:var(--box);border-left:4px solid var(--acc);padding:8px 14px;margin:12px 0;border-radius:4px}
+select,textarea,button{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:6px}
+textarea{width:100%;min-height:220px;box-sizing:border-box}
+button{background:var(--acc);color:var(--bg);border:0;padding:8px 16px;cursor:pointer;margin:6px 6px 6px 0}
+.q{padding:8px 0;border-bottom:1px solid var(--line)}.r{font-weight:600;margin-left:6px}
+.ok{color:var(--ok)}.no{color:var(--no)}
+.count{font-weight:700}label{display:block}details{margin:8px 0}summary{cursor:pointer;color:var(--acc);font-weight:600}
+</style></head><body><main>
+<h1>Expository Writing – Practice</h1>
+<nav><a href="#cs">7Cs quiz</a><a href="#essay">Essay</a><a href="#email">Email</a><a href="#memo">Memo</a></nav>
+
+<h2 id="cs">1. 7Cs: Which C is broken?</h2>
+<div class="card" id="quiz"></div>
+<button onclick="checkQ()">Check answers</button><span id="score" class="r"></span>
+
+<h2 id="essay">2. Essay practice (250–300 words)</h2>
+<div class="box">Pick a topic. Plan first (3 minutes), then write. Make topic sentences stand out (marker or underline) on paper.</div>
+<select id="etopic" onchange="document.getElementById('eplan').innerHTML=plans[this.value]">
+<option value="0">Business adopting AI and digital technologies</option>
+<option value="1">Social media: positive / negative impact on the young generation</option></select>
+<div class="card" id="eplan"></div>
+<textarea id="e" placeholder="Write your essay here…" oninput="wc('e',250,300)"></textarea>
+<div>Words: <span class="count" id="e_n">0</span> <span id="e_m"></span></div>
+<div class="card"><b>Self-check</b>
+<label><input type="checkbox"> 5 paragraphs</label><label><input type="checkbox"> Hook + thesis in intro</label>
+<label><input type="checkbox"> Each body paragraph has its own highlighted topic sentence</label>
+<label><input type="checkbox"> 3–4 reasons in each body paragraph</label>
+<label><input type="checkbox"> Conclusion paraphrases the thesis and gives my opinion</label>
+<label><input type="checkbox"> Formal words, no contractions</label></div>
+
+<h2 id="email">3. Email practice (150–200 words)</h2>
+<div class="card"><b>Prompts</b> (pick one):
+<ol><li>You are Head of the Student Department. During an event some students had a dispute. Report the incident to the Dean.</li>
+<li>Write an inquiry email to a company about an internship.</li>
+<li>Write an apology email to a teacher for missing a presentation.</li></ol></div>
+<textarea id="m" placeholder="Subject: …&#10;&#10;Dear …" oninput="wc('m',150,200)"></textarea>
+<div>Words: <span class="count" id="m_n">0</span> <span id="m_m"></span></div>
+<div class="card"><b>Self-check</b>
+<label><input type="checkbox"> Clear subject line</label><label><input type="checkbox"> Formal greeting (Dear + title + name)</label>
+<label><input type="checkbox"> Purpose in the first lines</label><label><input type="checkbox"> What, when, where, who, what you did</label>
+<label><input type="checkbox"> Suggestion / action + thanks</label><label><input type="checkbox"> Sign-off with name and position</label>
+<label><input type="checkbox"> 7Cs checked (short, polite, specific, correct)</label></div>
+<details><summary>Hint: incident report plan</summary><p>Paragraph 1: purpose + event + date. Paragraph 2: what happened (facts). Paragraph 3: what you did. Paragraph 4: your suggestion + thanks.</p></details>
+
+<h2 id="memo">4. Memo practice</h2>
+<div class="card"><b>Prompts:</b> (1) As Head of Student Department, tell society members about a meeting. (2) Remind staff that the event rules have changed. (3) Report a small incident to your supervisor in memo form.</div>
+<textarea id="mm" style="min-height:160px" placeholder="MEMORANDUM&#10;TO:&#10;FROM:&#10;DATE:&#10;SUBJECT:" oninput="wc('mm',0,0)"></textarea>
+<div>Words: <span class="count" id="mm_n">0</span></div>
+<div class="card"><b>Self-check</b>
+<label><input type="checkbox"> TO / FROM / DATE / SUBJECT all present</label><label><input type="checkbox"> No “Dear” and no “Yours sincerely”</label>
+<label><input type="checkbox"> Purpose in the first line</label><label><input type="checkbox"> Action and deadline at the end</label>
+<label><input type="checkbox"> Fits on one page</label></div>
+
+<script>
+var plans=[
+"<b>Thesis idea:</b> Businesses should adopt AI because it saves time, cuts cost and improves service.<br><b>Body 1:</b> Saves time (automation, 24/7 work).<br><b>Body 2:</b> Reduces cost (less paper, fewer errors, online meetings).<br><b>Body 3:</b> Better service and decisions (chatbots, data).<br><b>Conclusion:</b> Paraphrase + opinion. You can also mention one risk (job loss, privacy) and say staff training solves it.",
+"<b>Thesis idea:</b> Social media has both benefits and harms, so young people must use it wisely.<br><b>Body 1:</b> Positive: learning, staying connected, opportunities.<br><b>Body 2:</b> Negative: distraction, less sleep, anxiety.<br><b>Body 3:</b> Negative: fake news, cyberbullying, privacy.<br><b>Conclusion:</b> Paraphrase + opinion (use it with time limits and care)."];
+document.getElementById('eplan').innerHTML=plans[0];
+var qs=[["“Their going to anounce the results tommorow.”","Correctness"],["“Seminar on Friday. Don’t miss it!”","Completeness"],["“Please leverage your bandwidth to operationalize the deliverables.”","Clarity"],["“Send me your assignment. Now.”","Courtesy"],["“Our society got a lot of new members this year.”","Concreteness"],["“You failed? Well, the quiz was really easy.”","Consideration"],["“Due to the fact that it was raining, we made the decision to cancel.”","Conciseness"]];
+var cs=["Completeness","Conciseness","Consideration","Concreteness","Clarity","Correctness","Courtesy"];
+var h="";qs.forEach(function(q,i){h+='<div class="q">'+(i+1)+'. '+q[0]+'<br><select id="q'+i+'"><option value="">Choose…</option>'+cs.map(function(c){return '<option>'+c+'</option>'}).join('')+'</select><span class="r" id="r'+i+'"></span></div>'});
+document.getElementById('quiz').innerHTML=h;
+function checkQ(){var s=0;qs.forEach(function(q,i){var v=document.getElementById('q'+i).value,r=document.getElementById('r'+i);
+if(v===q[1]){s++;r.className='r ok';r.textContent='Correct'}else{r.className='r no';r.textContent=v?'Try again':'Pick one'}});
+document.getElementById('score').textContent='Score: '+s+' / 7'}
+function wc(id,min,max){var t=document.getElementById(id).value.trim(),n=t?t.split(/\s+/).length:0;
+document.getElementById(id+'_n').textContent=n;var m=document.getElementById(id+'_m');if(!m)return;
+if(n<min){m.className='no';m.textContent='Write more (target '+min+'–'+max+')'}else if(n>max){m.className='no';m.textContent='Too long (target '+min+'–'+max+')'}else{m.className='ok';m.textContent='Good length'}}
+</script></main></body></html>
